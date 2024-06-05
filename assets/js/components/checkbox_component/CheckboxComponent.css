@@ -1,0 +1,32 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:host {
+  display: flex;
+  gap: 24px;
+  font-size: 16px;
+  align-items: center;
+  & .checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-white);
+    cursor: pointer;
+  }
+  & .checkbox * {
+    display: none;
+  }
+}
+:host(:state(checked)) .checkbox {
+  border: none;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & * {
+    display: block;
+  }
+}

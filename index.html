@@ -73,7 +73,7 @@
                   id="id_uppercase_letters"
                   name="password-options"
                 />
-                Include Uppercase Letters
+                <custom-checkbox>Include Uppercase Letters</custom-checkbox>
               </label>
               <label for="id_lowercase_letters">
                 <input
@@ -81,7 +81,7 @@
                   id="id_lowercase_letters"
                   name="password-options"
                 />
-                Include Lowercase Letters
+                <custom-checkbox>Include Lowercase Letters</custom-checkbox>
               </label>
               <label for="id_numbers">
                 <input
@@ -89,7 +89,7 @@
                   id="id_numbers"
                   name="password-options"
                 />
-                Include Numbers
+                <custom-checkbox>Include Numbers</custom-checkbox>
               </label>
               <label for="id_symbols">
                 <input
@@ -97,11 +97,11 @@
                   id="id_symbols"
                   name="password-options"
                 />
-                Include Symbols</label
-              >
+                <custom-checkbox>Include Symbols</custom-checkbox>
+              </label>
             </fieldset>
 
-            <div class="password-generator__strength-meter">
+            <div class="password-generator__strength-block">
               <p>Strength</p>
               <div class="strength-meter">
                 <p class="strength-meter__label"></p>
@@ -114,12 +114,20 @@
 
             <button class="password-generator__submit-btn" type="submit">
               <span class="button-text">Generate</span>
-              <img
-                src="./assets/images/icon-arrow-right.svg"
-                alt=""
+              <svg
                 width="12"
                 height="12"
-              />
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-labelledby="arrow-svg-icon-title"
+                focusable="false"
+              >
+                <title id="arrow-svg-icon-title">Arrow Icon</title>
+                <path
+                  fill="#24232C"
+                  d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"
+                />
+              </svg>
             </button>
           </form>
         </password-generator-wrapper>
