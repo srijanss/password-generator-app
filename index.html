@@ -20,95 +20,109 @@
       <section class="password-generator">
         <h1>Password Generator</h1>
 
-        <div class="password-generator__result">
-          <input type="text" placeholder="P4$5W0rD!" readonly />
-          <svg
-            class="copy-icon"
-            width="21"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-labelledby="copy-svg-icon-title"
-            focusable="false"
-          >
-            <title id="copy-svg-icon-title">Copy Icon</title>
-            <path
-              d="M20.341 3.091 17.909.659A2.25 2.25 0 0 0 16.319 0H8.25A2.25 2.25 0 0 0 6 2.25V4.5H2.25A2.25 2.25 0 0 0 0 6.75v15A2.25 2.25 0 0 0 2.25 24h10.5A2.25 2.25 0 0 0 15 21.75V19.5h3.75A2.25 2.25 0 0 0 21 17.25V4.682a2.25 2.25 0 0 0-.659-1.591ZM12.469 21.75H2.53a.281.281 0 0 1-.281-.281V7.03a.281.281 0 0 1 .281-.281H6v10.5a2.25 2.25 0 0 0 2.25 2.25h4.5v1.969a.282.282 0 0 1-.281.281Zm6-4.5H8.53a.281.281 0 0 1-.281-.281V2.53a.281.281 0 0 1 .281-.281H13.5v4.125c0 .621.504 1.125 1.125 1.125h4.125v9.469a.282.282 0 0 1-.281.281Zm.281-12h-3v-3h.451c.075 0 .147.03.2.082L18.667 4.6a.283.283 0 0 1 .082.199v.451Z"
-              fill="#A4FFAF"
-            />
-          </svg>
-        </div>
-        <form
-          name="generate-password"
-          class="password-generator__form"
-          action="/generate-password/"
-          method="post"
-          novalidate
-        >
-          <div class="form-group">
-            <label for="id_password_length">
-              <span class="label-text"> Character Length </span>
-              <span class="password-length-value">0</span>
-            </label>
-            <input
-              type="range"
-              id="id_password_length"
-              name="password-length"
-              min="0"
-              max="20"
-              value="0"
-              required
-            />
-          </div>
-
-          <fieldset class="form-group">
-            <legend>Choose password options</legend>
-            <label for="id_uppercase_letters">
-              <input
-                type="checkbox"
-                id="id_uppercase_letters"
-                name="password-options"
-              />
-              Include Uppercase Letters
-            </label>
-            <label for="id_lowercase_letters">
-              <input
-                type="checkbox"
-                id="id_lowercase_letters"
-                name="password-options"
-              />
-              Include Lowercase Letters
-            </label>
-            <label for="id_numbers">
-              <input type="checkbox" id="id_numbers" name="password-options" />
-              Include Numbers
-            </label>
-            <label for="id_symbols">
-              <input type="checkbox" id="id_symbols" name="password-options" />
-              Include Symbols</label
+        <password-generator-result class="password-generator__result">
+          <input type="text" id="id_result" placeholder="P4$5W0rD!" readonly />
+          <div class="copy-icon__wrapper">
+            <span class="copy-success">Copied</span>
+            <svg
+              class="copy-icon"
+              width="21"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-labelledby="copy-svg-icon-title"
+              focusable="false"
             >
-          </fieldset>
-
-          <div class="password-generator__strength">
-            <p>Strength</p>
-            <div class="strength-meter">
-              <div class="strength-meter__bar"></div>
-              <div class="strength-meter__bar"></div>
-              <div class="strength-meter__bar"></div>
-              <div class="strength-meter__bar"></div>
-            </div>
+              <title id="copy-svg-icon-title">Copy Icon</title>
+              <path
+                d="M20.341 3.091 17.909.659A2.25 2.25 0 0 0 16.319 0H8.25A2.25 2.25 0 0 0 6 2.25V4.5H2.25A2.25 2.25 0 0 0 0 6.75v15A2.25 2.25 0 0 0 2.25 24h10.5A2.25 2.25 0 0 0 15 21.75V19.5h3.75A2.25 2.25 0 0 0 21 17.25V4.682a2.25 2.25 0 0 0-.659-1.591ZM12.469 21.75H2.53a.281.281 0 0 1-.281-.281V7.03a.281.281 0 0 1 .281-.281H6v10.5a2.25 2.25 0 0 0 2.25 2.25h4.5v1.969a.282.282 0 0 1-.281.281Zm6-4.5H8.53a.281.281 0 0 1-.281-.281V2.53a.281.281 0 0 1 .281-.281H13.5v4.125c0 .621.504 1.125 1.125 1.125h4.125v9.469a.282.282 0 0 1-.281.281Zm.281-12h-3v-3h.451c.075 0 .147.03.2.082L18.667 4.6a.283.283 0 0 1 .082.199v.451Z"
+                fill="#A4FFAF"
+              />
+            </svg>
           </div>
+        </password-generator-result>
+        <password-generator-wrapper>
+          <form
+            name="generate-password"
+            class="password-generator__form"
+            action="/generate-password/"
+            method="post"
+            novalidate
+          >
+            <div class="form-group">
+              <label for="id_password_length">
+                <span class="label-text"> Character Length </span>
+                <span class="password-length-value">0</span>
+              </label>
+              <input
+                type="range"
+                id="id_password_length"
+                name="password-length"
+                min="0"
+                max="20"
+                value="0"
+                required
+              />
+            </div>
 
-          <button class="password-generator__submit-btn" type="submit">
-            <span class="button-text">Generate</span>
-            <img
-              src="./assets/images/icon-arrow-right.svg"
-              alt=""
-              width="12"
-              height="12"
-            />
-          </button>
-        </form>
+            <fieldset class="form-group">
+              <legend>Choose password options</legend>
+              <label for="id_uppercase_letters">
+                <input
+                  type="checkbox"
+                  id="id_uppercase_letters"
+                  name="password-options"
+                />
+                Include Uppercase Letters
+              </label>
+              <label for="id_lowercase_letters">
+                <input
+                  type="checkbox"
+                  id="id_lowercase_letters"
+                  name="password-options"
+                />
+                Include Lowercase Letters
+              </label>
+              <label for="id_numbers">
+                <input
+                  type="checkbox"
+                  id="id_numbers"
+                  name="password-options"
+                />
+                Include Numbers
+              </label>
+              <label for="id_symbols">
+                <input
+                  type="checkbox"
+                  id="id_symbols"
+                  name="password-options"
+                />
+                Include Symbols</label
+              >
+            </fieldset>
+
+            <div class="password-generator__strength-meter">
+              <p>Strength</p>
+              <div class="strength-meter">
+                <p class="strength-meter__label"></p>
+                <div class="strength-meter__bar"></div>
+                <div class="strength-meter__bar"></div>
+                <div class="strength-meter__bar"></div>
+                <div class="strength-meter__bar"></div>
+              </div>
+            </div>
+
+            <button class="password-generator__submit-btn" type="submit">
+              <span class="button-text">Generate</span>
+              <img
+                src="./assets/images/icon-arrow-right.svg"
+                alt=""
+                width="12"
+                height="12"
+              />
+            </button>
+          </form>
+        </password-generator-wrapper>
       </section>
     </main>
   </body>
