@@ -15,12 +15,8 @@ export default class PasswordGeneratorWrapper extends HTMLElement {
       "input[name='password-options']"
     );
     this.generateBtn = this.form.querySelector("button[type='submit']");
-    this.passwordStrengthBlock = self.querySelector(
-      ".password-generator__strength-meter"
-    );
-    this.passwordStrengthLabel = this.passwordStrengthBlock.querySelector(
-      ".strength-meter__label"
-    );
+    this.passwordStrengthLabel = self.querySelector(".strength-meter__label");
+    this.passwordStrengthMeter = self.querySelector(".strength-meter");
     this.registerListeners();
   }
 
@@ -53,18 +49,16 @@ export default class PasswordGeneratorWrapper extends HTMLElement {
   }
 
   updatePasswordStrengthMeter(result) {
-    this.passwordStrengthLabel.textContent = this.getNameFromSlug(
-      result.strength
-    );
+    this.passwordStrengthLabel.textContent = result.strength.label;
     if (
-      this.passwordStrengthBlock.classList.contains(
+      this.passwordStrengthMeter.classList.contains(
         this.currentPasswordStrength
       )
     ) {
-      this.passwordStrengthBlock.classList.remove(this.currentPasswordStrength);
+      this.passwordStrengthMeter.classList.remove(this.currentPasswordStrength);
     }
-    this.passwordStrengthBlock.classList.add(result.strength);
-    this.currentPasswordStrength = result.strength;
+    this.passwordStrengthMeter.classList.add(result.strength.className);
+    this.currentPasswordStrength = result.strength.className;
   }
 
   dispatchPasswordGeneratedEvent(password) {
@@ -74,12 +68,5 @@ export default class PasswordGeneratorWrapper extends HTMLElement {
       },
     });
     document.dispatchEvent(passwordGeneratedEvent);
-  }
-
-  getNameFromSlug(slug) {
-    return slug
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
   }
 }

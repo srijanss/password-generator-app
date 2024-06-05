@@ -54,15 +54,15 @@ export default class PasswordGenerator {
   getPasswordStrength(password) {
     const strength = this.getPasswordStrengthBasedOnRegex(password);
     if (strength === 1) {
-      return "very-weak";
+      return { className: "too-weak", label: "Too weak!" };
     } else if (strength === 2) {
-      return "weak";
+      return { className: "weak", label: "Weak" };
     } else if (strength === 3) {
-      return "medium";
+      return { className: "medium", label: "Medium" };
     } else if (strength >= 4) {
-      return "strong";
+      return { className: "strong", label: "Strong" };
     } else {
-      return null;
+      return { className: "", label: "" };
     }
   }
 
