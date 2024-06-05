@@ -1,0 +1,10 @@
+@define-mixin media-query-desktop {
+  @media (min-width: 1440px) {
+    @mixin-content;
+  }
+}
+@define-mixin media-query-tablet {
+  @media (min-width: 768px) {
+    @mixin-content;
+  }
+}
