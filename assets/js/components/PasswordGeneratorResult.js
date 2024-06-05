@@ -6,7 +6,7 @@ export default class PasswordGeneratorResult extends HTMLElement {
   connectedCallback() {
     this.resultInput = self.querySelector("#id_result");
     this.copyIcon = self.querySelector(".copy-icon");
-    this.copySuccessEl = self.querySelector(".copy-success");
+    this.copySuccessEl = self.querySelector(".copied-text");
     this.registerListeners();
   }
 
@@ -23,9 +23,9 @@ export default class PasswordGeneratorResult extends HTMLElement {
   handleCopyIconClick(e) {
     if (this.resultInput.value === "") return;
     this.copyToClipboard(this.resultInput.value).then(() => {
-      this.copySuccessEl.classList.add("copied");
+      this.copySuccessEl.classList.add("success");
       setTimeout(() => {
-        this.copySuccessEl.classList.remove("copied");
+        this.copySuccessEl.classList.remove("success");
       }, 1000);
     });
   }

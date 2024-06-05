@@ -66,6 +66,38 @@ main {
   width: 100%;
 }
 
+password-generator-result {
+  display: block;
+  position: relative;
+
+  & .copy-icon__wrapper {
+    --copy-icon-height: 24px;
+    height: var(--copy-icon-height);
+    position: absolute;
+    top: calc(50% - var(--copy-icon-height) / 2);
+    right: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    & svg:hover {
+      cursor: pointer;
+      & path {
+        fill: var(--color-white);
+      }
+    }
+    & .copied-text {
+      display: none;
+      color: var(--color-primary);
+      font-size: 16px;
+      text-transform: uppercase;
+      line-height: 1.5;
+      &.success {
+        display: block;
+      }
+    }
+  }
+}
+
 password-generator-wrapper {
   display: block;
   background-color: var(--color-dark-grey);
