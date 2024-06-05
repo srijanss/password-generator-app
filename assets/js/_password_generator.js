@@ -3,7 +3,7 @@ export default class PasswordGenerator {
     this.uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     this.lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
     this.numbers = "0123456789";
-    this.symbols = "!@#$%^&*()-_+=<>?/{}[]";
+    this.symbols = "!@#\\$%\\^&\\*\\(\\)-\\+=<>\\?/\\{\\}\\[\\]_";
     this.passwordLength = 0;
     this.includeUppercase = false;
     this.includeLowercase = false;
@@ -34,7 +34,9 @@ export default class PasswordGenerator {
     this.characterSet = this.includeUppercase ? this.uppercaseLetters : "";
     this.characterSet += this.includeLowercase ? this.lowercaseLetters : "";
     this.characterSet += this.includeNumbers ? this.numbers : "";
-    this.characterSet += this.includeSymbols ? this.symbols : "";
+    this.characterSet += this.includeSymbols
+      ? this.symbols.replace(/\\/g, "")
+      : "";
   }
 
   getPasswordStrengthBasedOnRegex(password) {

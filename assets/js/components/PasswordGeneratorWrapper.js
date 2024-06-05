@@ -49,6 +49,7 @@ export default class PasswordGeneratorWrapper extends HTMLElement {
   }
 
   updatePasswordStrengthMeter(result) {
+    console.log(result);
     this.passwordStrengthLabel.textContent = result.strength.label;
     if (
       this.passwordStrengthMeter.classList.contains(

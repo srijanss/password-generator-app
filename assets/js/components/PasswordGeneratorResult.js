@@ -12,7 +12,6 @@ export default class PasswordGeneratorResult extends HTMLElement {
 
   registerListeners() {
     document.addEventListener("passwordGenerated", (event) => {
-      console.log(event.detail.password);
       this.resultInput.value = event.detail.password;
     });
     this.copyIcon.addEventListener("click", (event) =>

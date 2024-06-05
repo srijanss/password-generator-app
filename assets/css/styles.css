@@ -50,15 +50,16 @@ button {
   text-transform: uppercase;
   color: var(--color-dark-grey);
   background-color: var(--color-primary);
-  &:focus,
   &:hover {
-    outline: none;
     background-color: var(--color-dark-grey);
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
     & svg path {
       fill: var(--color-primary);
     }
+  }
+  &:focus {
+    outline: none;
   }
 }
 
