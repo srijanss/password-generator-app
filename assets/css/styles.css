@@ -7,6 +7,10 @@
   --color-grey: #817d92;
   --color-dark-grey: #24232c;
   --color-very-dark-grey: #18171f;
+  --color-primary: #a4ffaf;
+  --color-too-weak: #f64a4a;
+  --color-weak: #fb7c58;
+  --color-medium: #f8cd65;
   --font-family: "JetBrains Mono", monospace;
   --font-size: 16px;
   --font-weight: 700;
