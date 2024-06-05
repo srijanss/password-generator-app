@@ -69,4 +69,65 @@ main {
 password-generator-wrapper {
   display: block;
   background-color: var(--color-dark-grey);
+
+  & .password-generator__strength-block {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    align-items: center;
+    background-color: var(--color-very-dark-grey);
+    & p {
+      flex: 1;
+      text-transform: uppercase;
+      font-size: 16px;
+      color: var(--color-grey);
+    }
+    & p.strength-meter__label {
+      color: var(--color-white);
+      font-size: 18px;
+      text-align: right;
+    }
+
+    & .strength-meter {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      & p {
+        color: var(--color-white);
+        font-size: 18px;
+        text-align: right;
+      }
+
+      & .strength-meter__bar {
+        width: 10px;
+        height: 28px;
+        border: 2px solid var(--color-white);
+      }
+
+      &.too-weak {
+        & .strength-meter__bar:nth-child(1) {
+          background-color: var(--color-too-weak);
+          border: none;
+        }
+      }
+      &.weak {
+        & .strength-meter__bar:nth-child(-n + 2) {
+          background-color: var(--color-weak);
+          border: none;
+        }
+      }
+      &.medium {
+        & .strength-meter__bar:nth-child(-n + 3) {
+          background-color: var(--color-medium);
+          border: none;
+        }
+      }
+      &.strong {
+        & .strength-meter__bar {
+          background-color: var(--color-primary);
+          border: none;
+        }
+      }
+    }
+  }
 }
