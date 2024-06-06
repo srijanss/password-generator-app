@@ -49,7 +49,7 @@
             method="post"
             novalidate
           >
-            <div class="form-group">
+            <div class="form-group form-group--password-length">
               <label for="id_password_length">
                 <span class="label-text"> Character Length </span>
                 <span class="password-length-value">0</span>
@@ -66,7 +66,7 @@
               <custom-range-slider></custom-range-slider>
             </div>
 
-            <fieldset class="form-group">
+            <fieldset class="form-group form-group__password-options">
               <legend>Choose password options</legend>
               <label for="id_uppercase_letters">
                 <input
@@ -104,7 +104,7 @@
 
             <div class="password-generator__strength-block">
               <p>Strength</p>
-              <p class="strength-meter__label">Too weak!</p>
+              <p class="strength-meter__label"></p>
               <div class="strength-meter">
                 <div class="strength-meter__bar"></div>
                 <div class="strength-meter__bar"></div>

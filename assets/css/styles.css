@@ -66,6 +66,20 @@ button {
 
 main {
   width: 100%;
+  padding-top: 64px;
+}
+
+.password-generator {
+  width: 343px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & h1 {
+    text-align: center;
+    color: var(--color-grey);
+  }
 }
 
 password-generator-result {
@@ -101,65 +115,97 @@ password-generator-result {
 }
 
 password-generator-wrapper {
-  display: block;
-  background-color: var(--color-dark-grey);
-
-  & .password-generator__strength-block {
+  & .password-generator__form {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    gap: 32px;
     padding: 16px;
-    align-items: center;
-    background-color: var(--color-very-dark-grey);
-    & p {
-      flex: 1;
-      text-transform: uppercase;
-      font-size: 16px;
-      color: var(--color-grey);
-    }
-    & p.strength-meter__label {
-      color: var(--color-white);
-      font-size: 18px;
-      text-align: right;
+    background-color: var(--color-dark-grey);
+
+    & .form-group--password-length label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      & .password-length-value {
+        font-size: 24px;
+        color: var(--color-primary);
+      }
     }
 
-    & .strength-meter {
+    & fieldset.form-group__password-options {
+      border: none;
+      margin: 0;
+      padding: 0;
       display: flex;
-      gap: 8px;
+      flex-direction: column;
+      gap: 16px;
+      & legend {
+        display: none;
+      }
+    }
+
+    & button.password-generator__submit-btn {
+      margin-top: -16px;
+    }
+
+    & .password-generator__strength-block {
+      display: flex;
+      gap: 16px;
+      padding: 16px;
       align-items: center;
+      background-color: var(--color-very-dark-grey);
       & p {
+        flex: 1;
+        text-transform: uppercase;
+        font-size: 16px;
+        color: var(--color-grey);
+      }
+      & p.strength-meter__label {
         color: var(--color-white);
         font-size: 18px;
         text-align: right;
       }
 
-      & .strength-meter__bar {
-        width: 10px;
-        height: 28px;
-        border: 2px solid var(--color-white);
-      }
+      & .strength-meter {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        & p {
+          color: var(--color-white);
+          font-size: 18px;
+          text-align: right;
+        }
 
-      &.too-weak {
-        & .strength-meter__bar:nth-child(1) {
-          background-color: var(--color-too-weak);
-          border: none;
-        }
-      }
-      &.weak {
-        & .strength-meter__bar:nth-child(-n + 2) {
-          background-color: var(--color-weak);
-          border: none;
-        }
-      }
-      &.medium {
-        & .strength-meter__bar:nth-child(-n + 3) {
-          background-color: var(--color-medium);
-          border: none;
-        }
-      }
-      &.strong {
         & .strength-meter__bar {
-          background-color: var(--color-primary);
-          border: none;
+          width: 10px;
+          height: 28px;
+          border: 2px solid var(--color-white);
+        }
+
+        &.too-weak {
+          & .strength-meter__bar:nth-child(1) {
+            background-color: var(--color-too-weak);
+            border: none;
+          }
+        }
+        &.weak {
+          & .strength-meter__bar:nth-child(-n + 2) {
+            background-color: var(--color-weak);
+            border: none;
+          }
+        }
+        &.medium {
+          & .strength-meter__bar:nth-child(-n + 3) {
+            background-color: var(--color-medium);
+            border: none;
+          }
+        }
+        &.strong {
+          & .strength-meter__bar {
+            background-color: var(--color-primary);
+            border: none;
+          }
         }
       }
     }
