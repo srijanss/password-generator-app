@@ -1,3 +1,5 @@
+@import "../../../css/_mixins.css";
+
 *,
 *:before,
 *:after {
@@ -6,19 +8,26 @@
   padding: 0;
 }
 :host {
-  height: 21px;
   display: flex;
-  gap: 24px;
+  gap: 20px;
   font-size: 16px;
-  align-items: center;
+  line-height: 21px;
+  /* align-items: center; */
   & .checkbox {
-    width: 20px;
-    height: 20px;
+    --checkbox-size: 20px;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
     border: 2px solid var(--color-white);
     cursor: pointer;
   }
   & .checkbox * {
     display: none;
+  }
+
+  @mixin media-query-tablet {
+    gap: 24px;
+    font-size: 18px;
+    line-height: 23px;
   }
 }
 :host(:state(checked)) .checkbox {

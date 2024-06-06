@@ -6,7 +6,10 @@
   padding: 0;
 }
 :host {
+  --custom-slider-height: 28px;
   display: grid;
+  align-items: center;
+  height: var(--custom-slider-height);
   & .slider-track {
     --track-cross-size: 0px;
     position: relative;
@@ -24,7 +27,7 @@
     }
   }
   & .slider-thumb {
-    --thumb-size: 28px;
+    --thumb-size: var(--custom-slider-height, 28px);
     width: var(--thumb-size);
     height: var(--thumb-size);
     position: absolute;
