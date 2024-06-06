@@ -40,7 +40,8 @@ input[type="text"] {
   font-size: 24px;
   padding: 0 16px;
 }
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="range"] {
   display: none;
 }
 button {

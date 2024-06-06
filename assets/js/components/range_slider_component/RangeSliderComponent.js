@@ -5,6 +5,31 @@ export default class RangeSliderComponent extends HTMLElement {
     self = super();
   }
 
+  get startX() {
+    return this._startX;
+  }
+
+  set startX(value) {
+    this._startX = value;
+  }
+
+  get endX() {
+    return this._endX;
+  }
+
+  set endX(value) {
+    this._endX = value;
+  }
+
+  get trackCrossSize() {
+    return this._trackCrossSize;
+  }
+
+  set trackCrossSize(value) {
+    this._trackCrossSize = value;
+    this.dispatchSliderChangeEvent();
+  }
+
   connectedCallback() {
     this.render();
     this.sliderThumb = this.shadowRoot.querySelector(".slider-thumb");
@@ -17,6 +42,7 @@ export default class RangeSliderComponent extends HTMLElement {
     this.startX = this.sliderTrack.getBoundingClientRect().left;
     this.endX =
       this.sliderTrack.getBoundingClientRect().right - this.sliderThumbDiameter;
+    this.trackCrossSize = 0;
     this.registerListeners();
   }
 
@@ -66,11 +92,11 @@ export default class RangeSliderComponent extends HTMLElement {
         position >= this.startX + this.offsetX &&
         position <= this.endX + this.offsetX
       ) {
-        const trackCrossSize = position - this.startX - this.offsetX;
-        this.sliderThumb.style.left = `${trackCrossSize}px`;
+        this.trackCrossSize = position - this.startX - this.offsetX;
+        this.sliderThumb.style.left = `${this.trackCrossSize}px`;
         this.sliderTrack.style.setProperty(
           "--track-cross-size",
-          `${trackCrossSize}px`
+          `${this.trackCrossSize + 5}px`
         );
       }
     }
@@ -79,5 +105,17 @@ export default class RangeSliderComponent extends HTMLElement {
   handleDragEnd(event) {
     this.isDragging = false;
     document.body.style.userSelect = "";
+  }
+
+  calculateTrackCrossPercentage() {
+    return Math.ceil((this.trackCrossSize / this.endX) * 100);
+  }
+
+  dispatchSliderChangeEvent() {
+    const trackCrossSizePercentage = this.calculateTrackCrossPercentage();
+    const event = new CustomEvent("sliderchange", {
+      detail: { percentage: trackCrossSizePercentage },
+    });
+    document.dispatchEvent(event);
   }
 }

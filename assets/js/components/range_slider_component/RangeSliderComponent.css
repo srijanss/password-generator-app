@@ -7,7 +7,6 @@
 }
 :host {
   display: grid;
-  padding: 1rem;
   & .slider-track {
     --track-cross-size: 0px;
     position: relative;

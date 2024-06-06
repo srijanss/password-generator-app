@@ -22,16 +22,24 @@ export default class PasswordGeneratorWrapper extends HTMLElement {
 
   registerListeners() {
     this.form.addEventListener("submit", (e) => e.preventDefault());
-    this.passwordLengthInput.addEventListener("input", (event) =>
-      this.handlePasswordLengthChange(event)
-    );
     this.generateBtn.addEventListener("click", (event) =>
       this.handleGenerateBtnClick(event)
     );
+    document.addEventListener("sliderchange", (event) =>
+      this.handlePasswordLengthChange(event)
+    );
+  }
+
+  getRangeValueFromPercentage(event) {
+    const percentageChange = event.detail.percentage;
+    const maxRange = this.passwordLengthInput.max;
+    return Math.round((maxRange * percentageChange) / 100);
   }
 
   handlePasswordLengthChange(event) {
-    this.passwordLengthOutput.textContent = event.target.value;
+    const rangeValue = this.getRangeValueFromPercentage(event);
+    this.passwordLengthInput.value = rangeValue;
+    this.passwordLengthOutput.textContent = rangeValue;
   }
 
   handleGenerateBtnClick(event) {
