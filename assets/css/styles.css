@@ -79,6 +79,7 @@ main {
   & h1 {
     text-align: center;
     color: var(--color-grey);
+    line-height: 1.3125;
   }
 }
 
@@ -122,26 +123,35 @@ password-generator-wrapper {
     padding: 16px;
     background-color: var(--color-dark-grey);
 
-    & .form-group--password-length label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-      & .password-length-value {
-        font-size: 24px;
-        color: var(--color-primary);
+    & .form-group--password-length {
+      height: 67px;
+      & label {
+        height: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 17px;
+        & .password-length-value {
+          font-size: 24px;
+          color: var(--color-primary);
+        }
       }
     }
 
     & fieldset.form-group__password-options {
+      height: 132px;
       border: none;
       margin: 0;
       padding: 0;
       display: flex;
       flex-direction: column;
       gap: 16px;
+
       & legend {
         display: none;
+      }
+      & label {
+        display: block;
       }
     }
 
@@ -150,6 +160,7 @@ password-generator-wrapper {
     }
 
     & .password-generator__strength-block {
+      height: 56px;
       display: flex;
       gap: 16px;
       padding: 16px;
