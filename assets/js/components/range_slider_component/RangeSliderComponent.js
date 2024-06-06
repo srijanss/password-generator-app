@@ -5,20 +5,12 @@ export default class RangeSliderComponent extends HTMLElement {
     self = super();
   }
 
-  get startX() {
-    return this._startX;
+  get trackWidth() {
+    return this._trackWidth;
   }
 
-  set startX(value) {
-    this._startX = value;
-  }
-
-  get endX() {
-    return this._endX;
-  }
-
-  set endX(value) {
-    this._endX = value;
+  set trackWidth(value) {
+    this._trackWidth = value;
   }
 
   get trackCrossSize() {
@@ -39,9 +31,9 @@ export default class RangeSliderComponent extends HTMLElement {
     );
     this.offsetX = this.sliderThumbDiameter / 2;
     this.isDragging = false;
-    this.startX = this.sliderTrack.getBoundingClientRect().left;
-    this.endX =
-      this.sliderTrack.getBoundingClientRect().right - this.sliderThumbDiameter;
+    this.startX = this.getTrackStartXPosition();
+    this.endX = this.getTrackEndXPosition();
+    this.trackWidth = this.sliderTrack.getBoundingClientRect().width;
     this.trackCrossSize = 0;
     this.registerListeners();
   }
@@ -74,6 +66,18 @@ export default class RangeSliderComponent extends HTMLElement {
 
     document.addEventListener("mouseup", (event) => this.handleDragEnd(event));
     document.addEventListener("touchend", (event) => this.handleDragEnd(event));
+    window.addEventListener("resize", (event) =>
+      this.handleWindowResize(event)
+    );
+  }
+
+  getTrackStartXPosition() {
+    return this.sliderTrack.getBoundingClientRect().left;
+  }
+  getTrackEndXPosition() {
+    return (
+      this.sliderTrack.getBoundingClientRect().right - this.sliderThumbDiameter
+    );
   }
 
   handleDragStart(event) {
@@ -108,7 +112,14 @@ export default class RangeSliderComponent extends HTMLElement {
   }
 
   calculateTrackCrossPercentage() {
-    return Math.ceil((this.trackCrossSize / this.endX) * 100);
+    const x =
+      this.trackCrossSize > this.trackWidth / 2 ? this.sliderThumbDiameter : 0;
+    return Math.ceil(((this.trackCrossSize + x) / this.trackWidth) * 100);
+  }
+
+  handleWindowResize(event) {
+    this.startX = this.getTrackStartXPosition();
+    this.endX = this.getTrackEndXPosition();
   }
 
   dispatchSliderChangeEvent() {
