@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/password-generator-app/assets/favicon-32x32-DQjEQYWa.png"
+    />
+
+    <title>Frontend Mentor | Password generator app</title>
+    <script type="module" crossorigin src="/password-generator-app/assets/index-cDjwYUPp.js"></script>
+    <link rel="stylesheet" crossorigin href="/password-generator-app/assets/index-CY0424OS.css">
+  </head>
+  <body>
+    <main>
+      <section class="password-generator">
+        <h1>Password Generator</h1>
+
+        <password-generator-result class="password-generator__result">
+          <input type="text" id="id_result" placeholder="P4$5W0rD!" readonly />
+          <div class="copy-icon__wrapper">
+            <span class="copied-text">Copied</span>
+            <svg
+              class="copy-icon"
+              width="21"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-labelledby="copy-svg-icon-title"
+              focusable="false"
+            >
+              <title id="copy-svg-icon-title">Copy Icon</title>
+              <path
+                d="M20.341 3.091 17.909.659A2.25 2.25 0 0 0 16.319 0H8.25A2.25 2.25 0 0 0 6 2.25V4.5H2.25A2.25 2.25 0 0 0 0 6.75v15A2.25 2.25 0 0 0 2.25 24h10.5A2.25 2.25 0 0 0 15 21.75V19.5h3.75A2.25 2.25 0 0 0 21 17.25V4.682a2.25 2.25 0 0 0-.659-1.591ZM12.469 21.75H2.53a.281.281 0 0 1-.281-.281V7.03a.281.281 0 0 1 .281-.281H6v10.5a2.25 2.25 0 0 0 2.25 2.25h4.5v1.969a.282.282 0 0 1-.281.281Zm6-4.5H8.53a.281.281 0 0 1-.281-.281V2.53a.281.281 0 0 1 .281-.281H13.5v4.125c0 .621.504 1.125 1.125 1.125h4.125v9.469a.282.282 0 0 1-.281.281Zm.281-12h-3v-3h.451c.075 0 .147.03.2.082L18.667 4.6a.283.283 0 0 1 .082.199v.451Z"
+                fill="#A4FFAF"
+              />
+            </svg>
+          </div>
+        </password-generator-result>
+        <password-generator-wrapper>
+          <form
+            name="generate-password"
+            class="password-generator__form"
+            action="/generate-password/"
+            method="post"
+            novalidate
+          >
+            <div class="form-group form-group--password-length">
+              <label for="id_password_length">
+                <span class="label-text"> Character Length </span>
+                <span class="password-length-value">0</span>
+              </label>
+              <input
+                type="range"
+                id="id_password_length"
+                name="password-length"
+                min="0"
+                max="20"
+                value="0"
+                required
+              />
+              <custom-range-slider></custom-range-slider>
+            </div>
+
+            <fieldset class="form-group form-group__password-options">
+              <legend>Choose password options</legend>
+              <label for="id_uppercase_letters">
+                <input
+                  type="checkbox"
+                  id="id_uppercase_letters"
+                  name="password-options"
+                />
+                <custom-checkbox>Include Uppercase Letters</custom-checkbox>
+              </label>
+              <label for="id_lowercase_letters">
+                <input
+                  type="checkbox"
+                  id="id_lowercase_letters"
+                  name="password-options"
+                />
+                <custom-checkbox>Include Lowercase Letters</custom-checkbox>
+              </label>
+              <label for="id_numbers">
+                <input
+                  type="checkbox"
+                  id="id_numbers"
+                  name="password-options"
+                />
+                <custom-checkbox>Include Numbers</custom-checkbox>
+              </label>
+              <label for="id_symbols">
+                <input
+                  type="checkbox"
+                  id="id_symbols"
+                  name="password-options"
+                />
+                <custom-checkbox>Include Symbols</custom-checkbox>
+              </label>
+            </fieldset>
+
+            <div class="password-generator__strength-block">
+              <p>Strength</p>
+              <p class="strength-meter__label"></p>
+              <div class="strength-meter">
+                <div class="strength-meter__bar"></div>
+                <div class="strength-meter__bar"></div>
+                <div class="strength-meter__bar"></div>
+                <div class="strength-meter__bar"></div>
+              </div>
+            </div>
+
+            <button class="password-generator__submit-btn" type="submit">
+              <span class="button-text">Generate</span>
+              <svg
+                width="12"
+                height="12"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-labelledby="arrow-svg-icon-title"
+                focusable="false"
+              >
+                <title id="arrow-svg-icon-title">Arrow Icon</title>
+                <path
+                  fill="#24232C"
+                  d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"
+                />
+              </svg>
+            </button>
+          </form>
+        </password-generator-wrapper>
+      </section>
+    </main>
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://github.com/srijanss" target="_blank"
+          >Srijan Manandhar</a
+        >.
+      </p>
+    </footer>
+  </body>
+</html>
