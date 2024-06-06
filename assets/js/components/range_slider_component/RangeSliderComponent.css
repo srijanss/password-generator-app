@@ -1,0 +1,42 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:host {
+  display: grid;
+  padding: 1rem;
+  & .slider-track {
+    --track-cross-size: 0px;
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background-color: var(--color-very-dark-grey);
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--track-cross-size);
+      height: 100%;
+      background-color: var(--color-primary);
+    }
+  }
+  & .slider-thumb {
+    --thumb-size: 28px;
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    position: absolute;
+    left: 0;
+    top: calc(50% - var(--thumb-size) / 2);
+    border-radius: 50%;
+    background-color: var(--color-white);
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-primary);
+    }
+  }
+}
