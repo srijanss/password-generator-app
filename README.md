@@ -1,22 +1,26 @@
-# Frontend Mentor - Password generator app
+# Frontend Mentor - Password generator app solution
 
-![Design preview for the Password generator app coding challenge](./preview.jpg)
+This is a solution to the [Password generator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for purchasing this premium Frontend Mentor coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects. These premium challenges are perfect portfolio pieces, so please feel free to use what you create in your portfolio to show others.
+## Overview
 
-**To do this challenge, you need a strong understanding of HTML, CSS, and JavaScript.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this password generator app and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - Generate a password based on the selected inclusion options
 - Copy the generated password to the computer's clipboard
@@ -24,70 +28,181 @@ Your users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![](./assets/images/desktop-screenshot.png)
+![](./assets/images/mobile-screenshot.png)
 
-Your task is to build out the project to the design file provided. We provide both Sketch and Figma versions of the design, so you can choose which tool you prefer to use. You can download the design file on the platform. **Please be sure not to share them with anyone else.** The design download comes with a `README.md` file as well to help you get set up.
+### Links
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized. Some are reusable at multiple screen sizes. So if you don't see an image in a specific folder, it will typically be in another folder for that page.
+- Solution URL: [https://github.com/srijanss/password-generator-app](https://github.com/srijanss/password-generator-app)
+- Live Site URL: [https://srijanss.github.io/password-generator-app/](https://srijanss.github.io/password-generator-app/)
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+## My process
 
-The design system in the design file will give you more information about the various colors, fonts, and styles used in this project. Our fonts always come from [Google Fonts](https://fonts.google.com/).
+### Built with
 
-## Building your project
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+- Web Components
+- [Vite](https://vitejs.dev/) - Lightweight frontend tooling
+- [PostCSS](https://postcss.org/) - Tool to transform CSS using plugins
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+### What I learned
 
-1. Separate the `starter-code` from the rest of this project and rename it to something meaningful for you. Initialize the codebase as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/). **⚠️ IMPORTANT ⚠️: There are already a couple of `.gitignore` files in this project. Please do not remove them or change the content of the files. If you create a brand new project, please use the `.gitignore` files provided in your new codebase. This is to avoid the accidental upload of the design files to GitHub. With these premium challenges, please be sure not to share the design files in your GitHub repo. Thanks!**
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+```html
+<label for="id_uppercase_letters">
+  <input type="checkbox" id="id_uppercase_letters" name="password-options" />
+  <custom-checkbox>Include Uppercase Letters</custom-checkbox>
+</label>
+```
 
-## Deploying your project
+Passing the text to the custom web components. And this was possible by adding <slot></slot> element in the CustomCheckbox component.
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+```css
+.strength-meter {
+  &.too-weak {
+    & .strength-meter__bar:nth-child(1) {
+      background-color: var(--color-too-weak);
+      border: none;
+    }
+  }
+  &.weak {
+    & .strength-meter__bar:nth-child(-n + 2) {
+      background-color: var(--color-weak);
+      border: none;
+    }
+  }
+  &.medium {
+    & .strength-meter__bar:nth-child(-n + 3) {
+      background-color: var(--color-medium);
+      border: none;
+    }
+  }
+  &.strong {
+    & .strength-meter__bar {
+      background-color: var(--color-primary);
+      border: none;
+    }
+  }
+}
+```
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+To show the strenght meter bars and apply colors to it, I found the solution using CSS and nth-child pseudo selector. I had some idea about passing number to nth-child which selects the corresponding child of an element. However, the use of :nth-child(-n + 2) was new to me, and it was really helpful for this case.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+```css
+:host(:state(checked)) .checkbox {
+  border: none;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & * {
+    display: block;
+  }
+}
+```
 
-## Create a custom `README.md`
+```js
+export default class CheckboxComponent extends HTMLElement {
+  constructor() {
+    super();
+    this.addEventListener("click", (e) => this._onClick(e));
+    this._internals = this.attachInternals();
+  }
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+  get checked() {
+    return this._internals.states.has("checked");
+  }
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+  set checked(flag) {
+    if (flag) {
+      this._internals.states.add("checked");
+    } else {
+      this._internals.states.delete("checked");
+    }
+  }
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+  _onClick(event) {
+    this.checked = !this.checked;
+  }
+  ...
+}
+```
 
-## Submitting your solution
+By making this custom component I got a chance to go deep into Web components and how we can set internal states. And same states can be used as pseudo selectors in CSS to apply different styles.
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+```js
+export default class RangeSliderComponent extends HTMLElement {
+  constructor() {
+    self = super();
+  }
+  ...
+  handleDragStart(event) {
+    event.preventDefault();
+    this.isDragging = true;
+    document.body.style.userSelect = "none";
+  }
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+  handleDragMove(event) {
+    if (event.changedTouches) {
+      event.clientX = event.changedTouches[0].clientX;
+    }
+    if (this.isDragging) {
+      const position = event.clientX;
+      if (
+        position >= this.startX + this.offsetX &&
+        position <= this.endX + this.offsetX
+      ) {
+        this.trackCrossSize = position - this.startX - this.offsetX;
+        this.sliderThumb.style.left = `${this.trackCrossSize}px`;
+        this.sliderTrack.style.setProperty(
+          "--track-cross-size",
+          `${this.trackCrossSize + 5}px`
+        );
+      }
+    }
+  }
 
-**⚠️ IMPORTANT ⚠️: With these premium challenges, please be sure not to upload the design files to GitHub when you're submitting to the platform and sharing it around. If you've created a brand new project, the easiest way to do that is to copy across the `.gitignore` provided in this starter project.**
+  handleDragEnd(event) {
+    this.isDragging = false;
+    document.body.style.userSelect = "";
+  }
+```
 
-## Sharing your solution
+I had some issue making the custom range slider. Adding CSS to the built in input['range'] was too time consuming and it was not looking like in the design. So, I decided to make custom range slider. To make it work I had to handle events like mousedown, mousemove and mouseup. And based on the width of the slider track and screen position of the thumb, we need to calculate theleft or right to movement based on how much the thumb was dragged across. And calculated the percentage of the movement to set value based on the max attribute of the default range slider. Similar, events listener for touch enabled devices were also done using touch events like touchstart, touchmove and touchend.
 
-There are multiple places you can share your solution:
+```js
+getPasswordStrengthBasedOnRegex(password) {
+    const hasUppercaseLettersRegex = new RegExp(`[${this.uppercaseLetters}]`);
+    const hasLowercaseLettersRegex = new RegExp(`[${this.lowercaseLetters}]`);
+    const hasNumbersRegex = new RegExp(`[${this.numbers}]`);
+    const hasSymbolsRegex = new RegExp(`[${this.symbols}]`);
+    let strength = 0;
+    if (password.length > 8) strength += 1;
+    if (password.match(hasUppercaseLettersRegex)) strength += 1;
+    if (password.match(hasLowercaseLettersRegex)) strength += 1;
+    if (password.match(hasNumbersRegex)) strength += 1;
+    if (password.match(hasSymbolsRegex)) strength += 2;
+    return strength;
+  }
+```
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+I used RegExp constructor method to match the generated password and calculate the strength.
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+### Continued development
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+I would like to further study about the different use cases of web components. Making the CheckboxComponent was really fun. I would like to work further on RangeSliderComponent, since currently only draging the slider thumb works. But if we click anywhere on the track it will now set the range value. I would also read more about <slot></slot> and <template></template> elements and how to use it meaningfully in web components.
 
-## Got feedback for us?
+### Useful resources
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+- [Web components - Custom State Set](https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet#browser_compatibility) - Very helpful resource about CustomStateSet in web components.
+- [getComputedStyle](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle) - Helpful resource about how to get CSS properties of an element
+- [Web API ClipBoard](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard) - Helpful resource about how to save data to clipboard.
 
-**Have fun building!** 🚀
+## Author
+
+- Website - [Srijan Manandhar](https://github.com/srijanss)
+- Frontend Mentor - [@srijanss](https://www.frontendmentor.io/profile/srijanss)
